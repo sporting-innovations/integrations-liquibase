@@ -1,0 +1,11 @@
+# Liquibase generated/log files
+*.log
+*.lck
+
+# IDE specific files
+.idea/
+*.iml
+
+# Build artifacts
+target/
+build/
