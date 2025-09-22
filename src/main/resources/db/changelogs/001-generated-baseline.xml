@@ -1,0 +1,213 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="liquibase (generated)" id="1758575030914-1">
+        <createTable tableName="social_sign_in_export_history">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="social_sign_in_export_history_pk"/>
+            </column>
+            <column name="org_mnemonic" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="file_type" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_tm" type="TIMESTAMP WITH TIME ZONE"/>
+            <column name="end_tm" type="TIMESTAMP WITH TIME ZONE"/>
+            <column name="records_processed" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="export_status" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="failure_details" type="TEXT"/>
+            <column name="create_dt_tm" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updt_dt_tm" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="true" name="active_ind" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="liquibase (generated)" id="1758575030914-2">
+        <createTable tableName="fanatics_export_history">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="fanatics_export_history_pk"/>
+            </column>
+            <column name="org_mnemonic" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="file_type" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="records_processed" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="export_status" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="failure_details" type="TEXT"/>
+            <column name="create_dt_tm" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updt_dt_tm" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="true" name="active_ind" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="liquibase (generated)" id="1758575030914-3">
+        <createTable tableName="seatgeek_export_history">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="seatgeek_export_history_pk"/>
+            </column>
+            <column name="org_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="file_type" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_cursor" type="TEXT"/>
+            <column name="end_cursor" type="TEXT"/>
+            <column name="records_processed" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="export_status" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="failure_details" type="JSONB"/>
+            <column name="create_dt_tm" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updt_dt_tm" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="true" name="active_ind" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="liquibase (generated)" id="1758575030914-4">
+        <createTable tableName="shopify_export_history">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="shopify_export_history_pk"/>
+            </column>
+            <column name="org_mnemonic" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="file_type" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_id" type="TEXT"/>
+            <column name="end_id" type="TEXT"/>
+            <column name="records_processed" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="export_status" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="failure_details" type="TEXT"/>
+            <column name="create_dt_tm" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updt_dt_tm" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="true" name="active_ind" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="liquibase (generated)" id="1758575030914-5">
+        <createTable tableName="tessitura_export_history">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="tessitura_export_history_pk"/>
+            </column>
+            <column name="org_mnemonic" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="TEXT"/>
+            <column name="end_date" type="TEXT"/>
+            <column name="records_processed" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="export_status" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="failure_details" type="TEXT"/>
+            <column name="create_dt_tm" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updt_dt_tm" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="true" name="active_ind" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="liquibase (generated)" id="1758575030914-6">
+        <createTable tableName="interceptor_config">
+            <column defaultValueComputed="gen_random_uuid()" name="id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="org" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="vendor" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="src_prefix" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_key" type="TEXT"/>
+            <column name="cursor" type="TIMESTAMP WITH TIME ZONE"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="create_dt_tm" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="updt_dt_tm" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="liquibase (generated)" id="1758575030914-7">
+        <createIndex indexName="social_sign_in_org_mnemonic_file_type_export_status_idx" tableName="social_sign_in_export_history">
+            <column name="org_mnemonic"/>
+            <column name="file_type"/>
+            <column name="export_status"/>
+            <column name="create_dt_tm"/>
+            <column defaultValueBoolean="true" name="active_ind"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="liquibase (generated)" id="1758575030914-8">
+        <createIndex indexName="seatgeek_org_id_file_type_idx" tableName="seatgeek_export_history">
+            <column name="org_id"/>
+            <column name="file_type"/>
+            <column defaultValueBoolean="true" name="active_ind"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="liquibase (generated)" id="1758575030914-9">
+        <createIndex indexName="shopify_org_mnemonic_file_type_export_status_idx" tableName="shopify_export_history">
+            <column name="org_mnemonic"/>
+            <column name="file_type"/>
+            <column name="export_status"/>
+            <column name="create_dt_tm"/>
+            <column defaultValueBoolean="true" name="active_ind"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="liquibase (generated)" id="1758575030914-10">
+        <createIndex indexName="tessitura_org_mnemonic_export_status_idx" tableName="tessitura_export_history">
+            <column name="org_mnemonic"/>
+            <column name="export_status"/>
+            <column name="create_dt_tm"/>
+            <column defaultValueBoolean="true" name="active_ind"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
