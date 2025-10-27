@@ -18,3 +18,10 @@ CREATE TABLE integrations.tessitura_export_history (
     CONSTRAINT tessitura_export_history_pk PRIMARY KEY (id)
 );
 
+
+--changeset liquibase:004-create-tessitura-export-history-index
+--comment: Create index for tessitura_export_history
+--preconditions onFail:MARK_RAN
+--precondition-sql-check expectedResult:0 SELECT COUNT(*) FROM pg_indexes WHERE schemaname='integrations' AND indexname='tessitura_org_mnemonic_export_status_idx';
+CREATE INDEX tessitura_org_mnemonic_export_status_idx 
+ON integrations.tessitura_export_history (org_mnemonic, export_status, create_dt_tm, active_ind);
