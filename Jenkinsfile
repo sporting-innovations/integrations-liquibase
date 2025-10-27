@@ -90,19 +90,6 @@ def runLiquibaseUpdate() {
     docker.image('liquibase/liquibase:4.17.0').inside() {
         sh '''
             echo "Running Liquibase update..."
-
-            echo "Attempting changelog-sync for baseline..."
-            liquibase changelog-sync \
-                --url=${DB_URL} \
-                --changeLogFile=src/main/resources/db/changeLog.xml \
-                --username=${DB_USERNAME} \
-                --password=${DB_PASSWORD} \
-                --databaseChangeLogLockTableName=databasechangeloglock \
-                --databaseChangelogTableName=databasechangelog \
-                --defaultSchemaName=integrations \
-                --log-level=INFO || echo "changelog-sync completed or no baseline to sync"
-            
-            echo "Running update to apply new changesets..."
             liquibase update \
                 --url=${DB_URL} \
                 --changeLogFile=src/main/resources/db/changeLog.xml \

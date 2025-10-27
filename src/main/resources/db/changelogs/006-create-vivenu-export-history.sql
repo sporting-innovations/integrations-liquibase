@@ -1,6 +1,7 @@
--- ============================================================================
--- VIVENU EXPORT HISTORY TABLE
--- ============================================================================
+--liquibase formatted sql
+
+--changeset cmccarson:006-create-vivenu-export-history-table
+--comment: Create vivenu_export_history table for tracking Vivenu API export runs
 CREATE TABLE integrations.vivenu_export_history (
     id UUID NOT NULL,
     org_mnemonic TEXT NOT NULL,
