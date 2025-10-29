@@ -15,5 +15,6 @@
     
     <!-- New tables (created by integrations-liquibase) -->
     <include file="changelogs/006-create-vivenu-export-history.sql"/>
+    <include file="changelogs/007-add-export-type-to-tessitura-export-history.sql"/>
 
 </databaseChangeLog>

@@ -8,8 +8,8 @@ pipeline {
     parameters {
         choice(
             name: 'ENVIRONMENT',
-            choices: ['DEV', 'QA', 'PROD'],
-            description: 'Select the target environment'
+            choices: ['PROD', 'QA', 'DEV'],
+            description: 'Select the target environment (PROD is default for main branch)'
         )
     }
     
@@ -17,6 +17,22 @@ pipeline {
         stage('Declarative: Checkout SCM') {
             steps {
                 checkout scm
+            }
+        }
+        
+        stage('Validate Branch') {
+            steps {
+                script {
+                    if (env.BRANCH_NAME != 'main') {
+                        error "This pipeline can only run on the 'main' branch. Current branch: ${env.BRANCH_NAME}"
+                    }
+                    
+                    if (params.ENVIRONMENT == 'PROD' && env.BRANCH_NAME != 'main') {
+                        error "PROD deployments are only allowed from the 'main' branch"
+                    }
+                    
+                    echo "Branch validation passed: ${env.BRANCH_NAME}"
+                }
             }
         }
         
@@ -46,6 +62,14 @@ pipeline {
         stage('Update') {
             steps {
                 script {
+                    // Require manual approval before running PROD updates
+                    if (params.ENVIRONMENT == 'PROD') {
+                        timeout(time: 5, unit: 'MINUTES') {
+                            input message: "Deploy Liquibase changes to PROD?\n\nBranch: ${env.BRANCH_NAME}\nDatabase: ${env.DB_URL}", 
+                                  ok: 'Deploy to PROD'
+                        }
+                    }
+
                     def credentialId
                     switch(params.ENVIRONMENT) {
                         case 'DEV':
@@ -66,13 +90,7 @@ pipeline {
                     withCredentials([
                         usernamePassword(credentialsId: credentialId, usernameVariable: 'DB_USERNAME', passwordVariable: 'DB_PASSWORD')
                     ]) {
-                        withEnv([
-                            "DB_URL=${env.DB_URL}",
-                            "DB_USERNAME=${DB_USERNAME}",
-                            "DB_PASSWORD=${DB_PASSWORD}"
-                        ]) {
-                            runLiquibaseUpdate()
-                        }
+                        runLiquibaseUpdate()
                     }
                 }
             }
@@ -92,7 +110,8 @@ def runLiquibaseUpdate() {
             echo "Running Liquibase update..."
             liquibase update \
                 --url=${DB_URL} \
-                --changeLogFile=src/main/resources/db/changeLog.xml \
+                --changeLogFile=changeLog.xml \
+                --search-path=src/main/resources/db \
                 --username=${DB_USERNAME} \
                 --password=${DB_PASSWORD} \
                 --databaseChangeLogLockTableName=databasechangeloglock \
