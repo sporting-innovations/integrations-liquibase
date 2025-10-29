@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <!-- Existing tables (migrated from seatgeek-api or manually created) -->
+    <include file="changelogs/000-create-seatgeek-export-history.sql"/>
+    <include file="changelogs/001-create-shopify-export-history.sql"/>
+    <include file="changelogs/002-create-social-signin-export-history.sql"/>
+    <include file="changelogs/003-create-fanatics-export-history.sql"/>
+    <include file="changelogs/004-create-tessitura-export-history.sql"/>
+    <include file="changelogs/005-create-interceptor-config.sql"/>
+    
+    <!-- New tables (created by integrations-liquibase) -->
+    <include file="changelogs/006-create-vivenu-export-history.sql"/>
+
+</databaseChangeLog>
