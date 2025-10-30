@@ -108,15 +108,15 @@ def runLiquibaseUpdate() {
     docker.image('liquibase/liquibase:4.17.0').inside() {
         sh '''
             echo "Running Liquibase update..."
-            liquibase update \
+            liquibase --search-path=src/main/resources/db \
+                --changelog-file=changeLog.xml \
+                update \
                 --url=${DB_URL} \
-                --changeLogFile=changeLog.xml \
-                --search-path=src/main/resources/db \
                 --username=${DB_USERNAME} \
                 --password=${DB_PASSWORD} \
-                --databaseChangeLogLockTableName=databasechangeloglock \
-                --databaseChangelogTableName=databasechangelog \
-                --defaultSchemaName=integrations \
+                --database-changelog-lock-table-name=databasechangeloglock \
+                --database-changelog-table-name=databasechangelog \
+                --default-schema-name=integrations \
                 --log-level=INFO
         '''
     }
