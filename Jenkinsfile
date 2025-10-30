@@ -109,15 +109,15 @@ def runLiquibaseUpdate() {
         sh '''
             echo "Running Liquibase update..."
             liquibase --search-path=src/main/resources/db \
-                --changelog-file=changeLog.xml \
+                --log-level=INFO \
                 update \
+                --changelog-file=changeLog.xml \
                 --url=${DB_URL} \
                 --username=${DB_USERNAME} \
                 --password=${DB_PASSWORD} \
                 --database-changelog-lock-table-name=databasechangeloglock \
                 --database-changelog-table-name=databasechangelog \
-                --default-schema-name=integrations \
-                --log-level=INFO
+                --default-schema-name=integrations
         '''
     }
 }
