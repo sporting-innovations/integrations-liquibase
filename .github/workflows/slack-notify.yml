@@ -1,0 +1,17 @@
+name: Pull Request Events
+
+on:
+  pull_request:
+    types:
+      - opened
+      - ready_for_review
+  pull_request_review:
+    types:
+      - submitted
+
+jobs:
+  slack-notify:
+    uses: sporting-innovations/github-workflows/.github/workflows/slack-notify.yml@main
+    with:
+      slack_channel: ${{ vars.INTEGRATIONS_OWNERS_SLACK_CHANNEL }}
+    secrets: inherit
