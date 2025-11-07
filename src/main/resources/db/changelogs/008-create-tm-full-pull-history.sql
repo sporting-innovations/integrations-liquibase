@@ -6,7 +6,7 @@ CREATE TABLE integrations.tm_full_pull_history (
     id UUID NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
     file_path TEXT NOT NULL UNIQUE,
     s3_location TEXT NOT NULL,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-    updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT (now() AT TIME ZONE 'UTC'),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT (now() AT TIME ZONE 'UTC'),
     metadata JSONB
 )
