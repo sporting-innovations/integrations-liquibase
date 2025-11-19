@@ -17,5 +17,6 @@
     <include file="changelogs/006-create-vivenu-export-history.sql"/>
     <include file="changelogs/007-add-export-type-to-tessitura-export-history.sql"/>
     <include file="changelogs/008-create-tm-full-pull-history.sql" />
-
+    <include file="changelogs/009-grant-vivenu-export-history-permissions.sql"/>
+    <include file="changelogs/010-grant-tm-full-pull-history-permissions.sql"/>
 </databaseChangeLog>
